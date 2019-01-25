@@ -23,6 +23,7 @@ if(is_ssl()){
 define('COUNTDOWN_URL', $myplugin_url);
 define('COUNTDOWN_DIR', plugin_dir_path(__FILE__));
 
-// TODO: include admin view and instantiate class here!
+include_once COUNTDOWN_DIR . 'admin/countdown_admin.php';
+$admin_page = new countdownAdmin();
 
 include('flipclock/flipclock.php');
