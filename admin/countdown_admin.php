@@ -56,23 +56,23 @@ class countdownAdmin {
 				<p>Set the default date and time you wish to count down to (you can change this by altering the shortcode):</p>
 				<p>
 					<label for="countdown_option_year">Year:</label><br />
-					<input type="number" id="countdown_option_year" name="countdown_option_year" value="<?php echo get_option('countdown_option_year'); ?>" />
+					<input type="number" min="<?php echo date("Y"); ?>" max="9999" id="countdown_option_year" name="countdown_option_year" value="<?php echo get_option('countdown_option_year'); ?>" />
 				</p>
 				<p>
 					<label for="countdown_option_month">Month:</label><br />
-					<input type="number" id="countdown_option_month" name="countdown_option_month" value="<?php echo get_option('countdown_option_month'); ?>" />
+					<input type="number" min="1" max="12" id="countdown_option_month" name="countdown_option_month" value="<?php echo get_option('countdown_option_month'); ?>" />
 				</p>
 				<p>
 					<label for="countdown_option_day">Day:</label><br />
-					<input type="number" id="countdown_option_day" name="countdown_option_day" value="<?php echo get_option('countdown_option_day'); ?>" />
+					<input type="number" min="1" max="31" id="countdown_option_day" name="countdown_option_day" value="<?php echo get_option('countdown_option_day'); ?>" />
 				</p>
 				<p>
 					<label for="countdown_option_hour">Hour:</label><br />
-					<input type="number" id="countdown_option_hour" name="countdown_option_hour" value="<?php echo get_option('countdown_option_hour'); ?>" />
+					<input type="number" min="0" max="23" id="countdown_option_hour" name="countdown_option_hour" value="<?php echo get_option('countdown_option_hour'); ?>" />
 				</p>
 				<p>
 					<label for="countdown_option_minute">Minute:</label><br />
-					<input type="number" id="countdown_option_minute" name="countdown_option_minute" value="<?php echo get_option('countdown_option_minute'); ?>" />
+					<input type="number" min="0" max="59" id="countdown_option_minute" name="countdown_option_minute" value="<?php echo get_option('countdown_option_minute'); ?>" />
 				</p>
 				<p>
 					<label for="countdown_option_second">Second:</label><br />
