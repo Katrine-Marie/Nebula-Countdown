@@ -74,10 +74,10 @@ class countdownAdmin {
 					<label for="countdown_option_minute">Minute:</label><br />
 					<input type="number" min="0" max="59" id="countdown_option_minute" name="countdown_option_minute" value="<?php echo get_option('countdown_option_minute'); ?>" />
 				</p>
-				<p>
+				<!-- <p>
 					<label for="countdown_option_second">Second:</label><br />
 					<input type="text" id="countdown_option_second" name="countdown_option_second" value="<?php echo get_option('countdown_option_second'); ?>" />
-				</p>
+				</p> -->
 				<?php  submit_button(); ?>
 			</form>
 		</div>
