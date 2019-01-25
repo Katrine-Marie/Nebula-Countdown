@@ -10,7 +10,20 @@ class countdownAdmin {
   	}
 
   	public function countdown_register_settings() {
-  		
+      add_option( 'countdown_option_year', '2020');
+  		add_option( 'countdown_option_month', '01');
+  		add_option( 'countdown_option_day', '01');
+  		add_option( 'countdown_option_hour', '23');
+  		add_option( 'countdown_option_minute', '59');
+  		add_option( 'countdown_option_second', '59');
+
+  		$settingsArray = array (
+  			'countdown_option_year','countdown_option_month','countdown_option_day','countdown_option_hour','countdown_option_minute','countdown_option_second'
+  		);
+
+  		foreach ($settingsArray as $setting) {
+  			register_setting( 'countdown_options_group', $setting, 'countdown_callback');
+  		}
   	}
 
   	public function countdown_register_options_page() {
