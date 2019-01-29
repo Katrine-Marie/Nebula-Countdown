@@ -8,14 +8,21 @@ add_action( 'wp_enqueue_scripts', __NAMESPACE__.'\flipclock_scripts' );
 
 function shortcode_flipclock( $atts ) {
 
-		$atts = shortcode_atts( array(
-	  	'year' => '2019',
-	  	'month' => '1', // Array notation
-    	'day' => '6',
-	  	'hour' => '00',
-	  	'minute' => '00')
-		,$atts );
+		// $atts = shortcode_atts( array(
+	  // 	'year' => '2019',
+	  // 	'month' => '1', // Array notation
+    // 	'day' => '6',
+	  // 	'hour' => '00',
+	  // 	'minute' => '00')
+		// ,$atts );
 
+		$atts = shortcode_atts( array(
+    	'year' => get_option('countdown_option_year'),
+    	'month' => get_option('countdown_option_month'), // Array notation
+    	'day' => get_option('countdown_option_day'),
+    	'hour' => get_option('countdown_option_hour'),
+    	'minute' => get_option('countdown_option_minute')
+		), $atts );
 
 		wp_enqueue_style('flipclock');
 	 	wp_enqueue_script('flipclock');
