@@ -43,8 +43,9 @@ function shortcode_flipclock( $atts ) {
 					var futureDate  = new Date(
 
 					<?php
+						$monthCalc = $atts['month'] - 1;
 
-						echo  $atts['year'].','.$atts['month'].','.$atts['day'].','.
+						echo  $atts['year'].','.$monthCalc.','.$atts['day'].','.
 						$atts['hour'].','.$atts['minute']
 					?> ,0,0);
 
