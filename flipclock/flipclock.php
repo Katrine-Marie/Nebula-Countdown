@@ -8,6 +8,55 @@ add_action( 'wp_enqueue_scripts', __NAMESPACE__.'\flipclock_scripts' );
 
 function shortcode_flipclock( $atts ) {
 
+		$atts = shortcode_atts( array(
+	  	'year' => '2019',
+	  	'month' => '1', // Array notation
+    	'day' => '6',
+	  	'hour' => '00',
+	  	'minute' => '00')
+		,$atts );
+
+
+		wp_enqueue_style('flipclock');
+	 	wp_enqueue_script('flipclock');
+
+		ob_start();?>
+		<div>
+			<a href="http://flipclockjs.com/">Documentation</a>
+			<div class="clock" style="margin:2em;"></div>
+
+			<script type="text/javascript">
+				var clock;
+				$(function(){
+
+					// Grab the current date
+					var currentDate = new Date();
+
+					// Set some date in the past. In this case, it's always been since Jan 1
+					var futureDate  = new Date(
+
+					<?php
+
+						echo  $atts['year'].','.$atts['month'].','.$atts['day'].','.
+						$atts['hour'].','.$atts['minute']
+					?> ,0,0);
+
+					console.log(futureDate);
+
+					// Calculate the difference in seconds between the future and current date
+					var diff = futureDate.getTime() / 1000 - currentDate.getTime() / 1000;
+
+					// Instantiate a countdown FlipClock
+					clock = jQuery('.clock').FlipClock(diff, {
+						clockFace: 'DailyCounter',
+						countdown:true
+					});
+				});
+			</script>
+
+		</div>
+		<?php
+	  return ob_get_clean();
 }
 
 function flipclock_styles() {
