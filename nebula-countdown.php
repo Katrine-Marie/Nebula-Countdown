@@ -2,7 +2,7 @@
 /**********
 * Plugin Name: Nebula Countdown
 * Description: Add countdowns to your posts/pages via shortcode
-* Version: 2.0.0
+* Version: 3.0.0
 * Author: Katrine-Marie Burmeister
 * Author URI: https://fjordstudio.dk
 * License: GPL-2.0+
