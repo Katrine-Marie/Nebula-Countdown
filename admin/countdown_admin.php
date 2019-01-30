@@ -36,25 +36,14 @@ class countdownAdmin {
 		<div class="wrap">
 			<?php screen_icon(); ?>
 			<h2>Countdown</h2>
+      <br /><hr><br />
+			<h3>
+				Set Defaults (OPTIONAL):
+			</h3>
+			<p>Set the default date and time (this is what will be counted down to, if no date/time is specified when you create a countdown):</p>
 			<form method="post" action="options.php">
 				<?php settings_fields( 'countdown_options_group' ); ?>
-				<p>Insert the countdown into a post or page by using the <code>[count_flipclock]</code> shortcode.</p>
-				<br /><hr><br />
-				<h3>
-					Customization (multiple countdowns):
-				</h3>
-				<p>
-					You can customize the date and time of each countdown by adding a the date/time info to the shortcode.
-				</p>
-				<p>
-					For example: <code>[count_flipclock year=2020 month=2 day=10]</code>
-				</p>
-				<p>
-					Supported attributes are: <code>year</code>, <code>month</code>, <code>day</code>, <code>minute</code> and <code>second</code>!
-				</p>
-				<br /><hr><br />
-				<p>Set the default date and time you wish to count down to (you can change this by altering the shortcode):</p>
-				<p>
+        <p>
 					<label for="countdown_option_year">Year:</label><br />
 					<input type="number" min="<?php echo date("Y"); ?>" max="9999" id="countdown_option_year" name="countdown_option_year" value="<?php echo get_option('countdown_option_year'); ?>" />
 				</p>
@@ -80,6 +69,23 @@ class countdownAdmin {
 				</p> -->
 				<?php  submit_button(); ?>
 			</form>
+      <br /><hr><br />
+			<h3>
+				Manual shortcode creation:
+			</h3>
+			<p>
+				Insert a countdown into a post or page by using the <code>[count_flipclock]</code> shortcode.<br />
+				You can do this as many times as you want.
+			</p>
+			<p>
+				You can customize the date and time of each countdown by adding a the date/time info to the shortcode.
+			</p>
+			<p>
+				For example: <code>[count_flipclock year=2020 month=2 day=10]</code>
+			</p>
+			<p>
+				Supported attributes are: <code>year</code>, <code>month</code>, <code>day</code>, <code>minute</code> and <code>second</code>!
+			</p>
 		</div>
 		<?php
 	}
