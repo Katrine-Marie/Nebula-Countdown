@@ -7,6 +7,7 @@ class countdownAdmin {
   public function __construct(){
   		add_action( 'admin_init', array($this, 'countdown_register_settings') );
   		add_action('admin_menu', array($this, 'countdown_register_options_page') );
+      add_action( 'admin_enqueue_scripts',  array($this, 'countdown_enqueue_admin_scripts') );
   	}
 
   	public function countdown_register_settings() {
@@ -29,6 +30,20 @@ class countdownAdmin {
   	public function countdown_register_options_page() {
   		global $page_hook_suffix;
   		$page_hook_suffix = add_options_page('Nebula Countdown', 'Countdown', 'manage_options', 'countdown', array($this,'countdown_options_page'));
+  	}
+
+    public function countdown_enqueue_admin_scripts($hook) {
+  		global $page_hook_suffix;
+  		if( $hook != $page_hook_suffix )
+  				return;
+  		wp_register_style('countdown_admin_style', COUNTDOWN_URL . 'admin/admin-style.css');
+  		wp_enqueue_style('countdown_admin_style');
+
+  		wp_register_script(
+  		'countdown_admin_script', COUNTDOWN_URL . 'admin/admin-script.js',
+        array('jquery', 'jquery-ui-core'), '1.0', 'all'
+    	);
+  		wp_enqueue_script('countdown_admin_script');
   	}
 
     public function countdown_options_page(){
