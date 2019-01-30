@@ -51,7 +51,38 @@ class countdownAdmin {
 		<div class="wrap">
 			<?php screen_icon(); ?>
 			<h2>Countdown</h2>
-      <br /><hr><br />
+      <h3>
+				Create a new countdown:
+			</h3>
+			<p>
+				In the form below, enter the date and time you wish to count down to:
+			</p>
+			<form method="post" action="" id="createShortcode">
+				<p>
+					<label for="countdown_year">Year:</label><br />
+					<input type="number" min="<?php echo date("Y"); ?>" max="9999" id="countdown_year" name="countdown_year" required />
+				</p>
+				<p>
+					<label for="countdown_month">Month:</label><br />
+					<input type="number" min="1" max="12" id="countdown_month" name="countdown_month" required />
+				</p>
+				<p>
+					<label for="countdown_day">Day:</label><br />
+					<input type="number" min="1" max="31" id="countdown_day" name="countdown_day" required />
+				</p>
+				<p>
+					<label for="countdown_hour">Hour:</label><br />
+					<input type="number" min="0" max="23" id="countdown_hour" name="countdown_hour" required />
+				</p>
+				<p>
+					<label for="countdown_minute">Minute:</label><br />
+					<input type="number" min="0" max="59" id="countdown_minute" name="countdown_minute" required />
+				</p>
+				<p class="submit">
+					<input type="submit" name="submit" id="shortcodeShow" class="button button-primary" value="Create Countdown" />
+				</p>
+			</form>
+			<br /><hr><br />
 			<h3>
 				Set Defaults (OPTIONAL):
 			</h3>
