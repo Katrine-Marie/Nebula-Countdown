@@ -2,6 +2,8 @@
 
 "Nebula Countdown" is a Wordpress plugin that lets you add countdowns to posts or pages on your website by inserting a shortcode specifying the date and time you wish to count down to.
 
+![Screenshot of the countdown](https://github.com/Katrine-Marie/Nebula-Countdown/screenshot_countdown.png "This is an example of what the countdown could look like")
+
 ## Settings Page
 
 On the settings page in the Wordpress dashboard (found in the Settings menu), you have the option of specifying default values, as well as creating new countdowns with specific date and time. There's also instructions for the manual creation of shortcodes, as specified below.
