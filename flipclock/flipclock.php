@@ -2,30 +2,27 @@
 
 namespace nebula\countdown;
 
-add_shortcode('count_flipclock', __NAMESPACE__.'\shortcode_flipclock' );
-add_action( 'wp_enqueue_scripts', __NAMESPACE__.'\flipclock_styles' );
-add_action( 'wp_enqueue_scripts', __NAMESPACE__.'\flipclock_scripts' );
+class Flipclock{
+	
+	public function __construct(){
+		add_shortcode('count_flipclock', array($this, 'shortcode_flipclock') );
+		add_action( 'wp_enqueue_scripts', array($this, 'flipclock_styles') );
+		add_action( 'wp_enqueue_scripts', array($this, 'flipclock_scripts') );
+	}
 
-function shortcode_flipclock( $atts ) {
+	public function shortcode_flipclock($atts) {
 
-		// $atts = shortcode_atts( array(
-	  // 	'year' => '2019',
-	  // 	'month' => '1', // Array notation
-    // 	'day' => '6',
-	  // 	'hour' => '00',
-	  // 	'minute' => '00')
-		// ,$atts );
-
+		// Defaults, followed by atts
 		$atts = shortcode_atts( array(
-    	'year' => get_option('countdown_option_year'),
-    	'month' => get_option('countdown_option_month'), // Array notation
-    	'day' => get_option('countdown_option_day'),
-    	'hour' => get_option('countdown_option_hour'),
-    	'minute' => get_option('countdown_option_minute')
+			'year' => get_option('countdown_option_year'),
+			'month' => get_option('countdown_option_month'), // Array notation
+			'day' => get_option('countdown_option_day'),
+			'hour' => get_option('countdown_option_hour'),
+			'minute' => get_option('countdown_option_minute')
 		), $atts );
 
-		wp_enqueue_style('flipclock');
-	 	wp_enqueue_script('flipclock');
+		wp_enqueue_style('flipclock_style');
+		wp_enqueue_script('flipclock_script');
 
 		ob_start();?>
 		<div>
@@ -64,20 +61,25 @@ function shortcode_flipclock( $atts ) {
 
 		</div>
 		<?php
-	  return ob_get_clean();
+		return ob_get_clean();
+	}
+
+	public function flipclock_styles() {
+		wp_register_style(
+			'flipclock_style',
+			COUNTDOWN_URL . 'flipclock/flipclock.css',
+			array()
+		);
+	}
+
+	public function flipclock_scripts() {
+		wp_register_script(
+			'flipclock_script', COUNTDOWN_URL . 'flipclock/flipclock.js',
+				array('jquery', 'jquery-ui-core'), '1.0', 'all'
+		);
+	}
+
 }
 
-function flipclock_styles() {
-	wp_register_style(
-		'flipclock',
-		COUNTDOWN_URL . 'flipclock/flipclock.css',
-		array()
-	);
-}
-
-function flipclock_scripts() {
-	wp_register_script(
-		'flipclock', COUNTDOWN_URL . 'flipclock/flipclock.js',
-      array('jquery', 'jquery-ui-core'), '1.0', 'all'
-  );
-}
+$countdown = new Flipclock();
+$countdown->shortcode_flipclock($atts);
